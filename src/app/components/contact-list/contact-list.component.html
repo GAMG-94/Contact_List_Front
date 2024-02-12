@@ -1,0 +1,38 @@
+<button class="btn bg-primary mb-2 text-white px-4 mx-2" routerLink="new">
+  Agregar Contacto
+</button>
+<div class="container">
+  <h2 class="text-white text-center p-4 rounded-top-4 bg-dark">
+    Agenda de Contactos
+  </h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered border-dark">
+      <thead>
+        <tr>
+          <th class="text-center">ID</th>
+          <th class="text-center">NOMBRE</th>
+          <th class="text-center">NÚMERO DE TELÉFONO</th>
+          <th class="text-center">EMAIL</th>
+          <th class="text-center">FECHA DE CREACIÓN</th>
+          <th class="text-center">ACCIONES</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (contact of contacts; track contact.id) {
+        <tr>
+          <td class="text-center">{{ contact.id }}</td>
+          <td class="text-center">{{ contact.name }}</td>
+          <td class="text-center">{{ contact.numberPhone }}</td>
+          <td class="text-center">{{ contact.email }}</td>
+          <td class="text-center">{{ contact.dateRegister | date : "dd/MM/yyyy hh:mm a" }}</td>
+          <td class="text-center">
+            <button class="btn btn-warning mx-2 fw-semibold" [routerLink]="[contact.id, 'edit']">Editar</button>
+            <button class="btn btn-danger fw-semibold" (click)="deleteContact(contact)">Eliminar</button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

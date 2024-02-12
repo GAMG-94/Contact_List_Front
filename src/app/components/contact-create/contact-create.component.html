@@ -1,0 +1,43 @@
+<button class="btn btn-primary mb-2 text-white px-4 mx-2" type="button" routerLink="/">Volver</button>
+<div class="container">
+  <h1 class="mb-5 bg-primary text-white text-center py-4 bg-dark rounded-top-4">
+    @if (contact) {
+      Editar Contacto
+    } @else {
+      Agregar Contacto
+    }
+  </h1>
+
+  @if (form) {
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="row d-flex">
+        <div class="col-md-6 mb-3">
+          <label for="name" class="form-label text-primary fw-bold fs-5">Nombre</label>
+          <input type="text" class="form-control" id="name" placeholder="Nombre"
+          formControlName="name">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="numberPhone" class="form-label text-primary fw-bold fs-5">Número de teléfono</label>
+          <input type="text" class="form-control" id="numberPhone" placeholder="Teléfono"
+          formControlName="numberPhone">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label for="email" class="form-label text-primary fw-bold fs-5">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Email"
+          formControlName="email">
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-md-12 text-center ">
+          <button class="btn btn-success fw-bold" type="submit">Guardar</button>
+          <button type="button" class="btn btn-danger m-4 fw-bold" routerLink="/">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  }
+</div>
